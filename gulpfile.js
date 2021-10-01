@@ -25,6 +25,13 @@ function css(cb){
     cb();
 }
 
+//fontawsome
+function fas(cb){
+    src('node_modules/@fortawesome/fontawesome-free/webfonts/*')
+    .pipe(dest('build/assets/webfonts/'))
+    cb();
+}
+exports.fas = fas;
 // server
 function server(cb){
     browserSync.init({
@@ -44,4 +51,4 @@ function watcher(cb){
 
     cb();
 }
-exports.default = series(clean,parallel(html, css , server), watcher);
+exports.default = series(clean,parallel(html, css ,fas, server), watcher);
